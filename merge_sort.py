@@ -32,12 +32,14 @@ def print_sort(arr):
 
 if __name__ == '__main__':
     arr = [5, 3, 10, 9, 13, 18, 9, 21]
+    merge_sort(arr)
+    print_sort(arr)
     
-    try:
+    ''' try:
         arr = []
         while True:
             arr.append((int(input())))
     except:
         merge_sort(arr)
-        print_sort(arr)
+        print_sort(arr) '''
 
