@@ -1,2 +1,3 @@
 # python_codes
-# solving programming problems using Python
+# Programming problems solution from various platform , leetcode, codeforces
+
