@@ -1,45 +1,30 @@
 def merge_sort(arr):
-    if len(arr) > 1:
-        mid = len(arr)//2
-        left_arr = arr[:mid]
-        right_arr = arr[mid:]
-        merge_sort(left_arr)
-        merge_sort(right_arr)
-        i = j = k = 0
-        while i<len(left_arr) and j<len(right_arr):
-            if left_arr[i]<right_arr[j]:
-                arr[k] = left_arr[i]
-                i += 1
-            else:
-                arr[k] = right_arr[j]
-                j += 1
-            k += 1
-        while i < len(left_arr):
-            arr[k] = left_arr[i]
+    if len(arr) <= 1:
+        return arr
+    mid = len(arr) // 2
+    left_half = arr[:mid]
+    right_half = arr[mid:]
+    left_half = merge_sort(left_half)
+    right_half = merge_sort(right_half)
+    return merge(left_half, right_half)
+
+
+def merge(left_array, right_array):
+    result = []
+
+    i = j = 0
+
+    while i < len(left_array) and j < len(right_array):
+        if left_array[i] < right_array[j]:
+            result.append(left_array[i])
             i += 1
-            k += 1
-        while j < len(right_arr):
-            arr[k] = right_arr[j]
+        else:
+            result.append(right_array[j])
             j += 1
-            k += 1
+    result.extend(left_array[i:])
+    result.extend(right_array[j:])
+    return result
 
 
-def print_sort(arr):
-    for i in range(len(arr)):
-        print(arr[i], end=" ")
-    print("\n")
-
-
-if __name__ == '__main__':
-    arr = [5, 3, 10, 9, 13, 18, 9, 21]
-    merge_sort(arr)
-    print_sort(arr)
-    
-    ''' try:
-        arr = []
-        while True:
-            arr.append((int(input())))
-    except:
-        merge_sort(arr)
-        print_sort(arr) '''
-
+a = [1,12,10,100, 11, 13,9,1, 229]
+print(merge_sort(a))
